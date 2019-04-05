@@ -5,6 +5,8 @@ import com.gxd.design.patterns.factory.Phone;
 import com.gxd.design.patterns.factory.PhoneFactory;
 import com.gxd.design.patterns.factory.phonefactoryimpl.IPhoneFactory;
 import com.gxd.design.patterns.factory.phonefactoryimpl.SamsungPhoneFactory;
+import com.gxd.design.patterns.observer.impl.Observable;
+import com.gxd.design.patterns.observer.impl.Subscriber;
 
 /**
  * Created by guoxiaodong on 2019/4/5 12:17
@@ -30,5 +32,14 @@ public class Main {
         phone = phoneFactory.createPhone();
         phone.call();
         phone.sendMessage();
+        // 观察者模式
+        Observable observable = new Observable();
+        Subscriber subscriber1 = new Subscriber();
+        observable.addObserver(subscriber1);
+        Subscriber subscriber2 = new Subscriber();
+        observable.addObserver(subscriber2);
+
+        observable.notifyAllObservers("notify all subscriber.");
+        observable.notify(subscriber1, "notify subscriber1.");
     }
 }
