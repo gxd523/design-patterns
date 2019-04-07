@@ -1,6 +1,9 @@
 package com.gxd.design.patterns;
 
 import com.gxd.design.patterns.builder.Person;
+import com.gxd.design.patterns.decorator.ConcreteComponent;
+import com.gxd.design.patterns.decorator.ConcreteDecorator1;
+import com.gxd.design.patterns.decorator.ConcreteDecorator2;
 import com.gxd.design.patterns.factory.Phone;
 import com.gxd.design.patterns.factory.PhoneFactory;
 import com.gxd.design.patterns.factory.phonefactoryimpl.IPhoneFactory;
@@ -60,5 +63,11 @@ public class Main {
                 proxyHandler
         );
         proxySubject.doSomething();
+        // 装饰模式
+        ConcreteComponent concreteComponent = new ConcreteComponent();
+        ConcreteDecorator1 concreteDecorator1 = new ConcreteDecorator1(concreteComponent);
+        concreteDecorator1.operate();
+        ConcreteDecorator2 concreteDecorator2 = new ConcreteDecorator2(concreteComponent);
+        concreteDecorator2.operate();
     }
 }
