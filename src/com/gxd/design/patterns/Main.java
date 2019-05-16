@@ -14,6 +14,8 @@ import com.gxd.design.patterns.proxy.Agent;
 import com.gxd.design.patterns.proxy.Delegator;
 import com.gxd.design.patterns.proxy.Subject;
 import com.gxd.design.patterns.proxy.dynamic.ProxyHandler;
+import com.gxd.design.patterns.template.AbstractTemplate;
+import com.gxd.design.patterns.template.ElephantTemplate;
 
 import java.lang.reflect.Proxy;
 
@@ -69,5 +71,8 @@ public class Main {
         concreteDecorator1.operate();
         ConcreteDecorator2 concreteDecorator2 = new ConcreteDecorator2(concreteComponent);
         concreteDecorator2.operate();
+        // 模板方法模式
+        AbstractTemplate elephantTemplate = new ElephantTemplate();
+        elephantTemplate.startWork();
     }
 }

@@ -19,6 +19,8 @@
 
 Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
+* Android中AlertDialog.Builder，okhttp中RequestBuilder
+
 ### 工厂模式
 > 工厂方法模式的作用就是封装对象的创建，由子类决定要创建的对象是什么。
 
@@ -37,3 +39,13 @@ Provide a surrogate or placeholder for another object to control access to it.
 > 动态地给一个对象添加一些额外的职责。就增加功能来说，装饰模式相比生成子类更加灵活。
 
 Attach additional responsibilities to an object dynamically keeping the same interface.Decorators provide a flexible alternative to subclassing for extending functionality.
+
+### 模版方法模式(Template Method Pattern)
+> 定义一个操作中的算法的框架，而将一些步骤延迟到子类中。是的子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
+
+Define the skeleton of an algorithm in an operation,deferring some steps to subclasses.Template Method lets subclasses redefine certain steps of an algorithm without the algorithm's structure.
+
+* 在Android中，很多地方用到：
+  * 系统启动过程
+  * 组件生命周期，比如Activity和Service等
+  * 一些具体封装类，比如AsyncTask等 

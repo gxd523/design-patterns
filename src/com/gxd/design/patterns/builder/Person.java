@@ -11,7 +11,7 @@ public class Person {
     private Person(PersonBuilder personBuilder) {
         this.name = personBuilder.name;
         this.age = personBuilder.age;
-        this.sex = personBuilder.sex;
+        this.sex = personBuilder.sex;// 如果sex=sex+age,那么直接使用Person时，Person的赋值顺序就会影响到sex的值，而使用PersonBuilder就不会
     }
 
     public String getName() {
