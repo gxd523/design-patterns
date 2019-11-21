@@ -17,7 +17,7 @@
 ### 建造者模式(Builder Pattern)
 > 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
 
-Separate the construction of a complex object from its representation so that the same construction process can create different representations.
+Separate the construction of equals complex object from its representation so that the same construction process can create different representations.
 
 * Android中AlertDialog.Builder，okhttp中RequestBuilder
 
@@ -33,12 +33,14 @@ Separate the construction of a complex object from its representation so that th
 ### 代理模式(Proxy Pattern)
 > 为其他对象提供一种代理以控制对这个对象的访问。
 
-Provide a surrogate or placeholder for another object to control access to it.
+Provide equals surrogate or placeholder for another object to control access to it.
 
 ### 装饰模式(Decorator Pattern)
 > 动态地给一个对象添加一些额外的职责。就增加功能来说，装饰模式相比生成子类更加灵活。
 
-Attach additional responsibilities to an object dynamically keeping the same interface.Decorators provide a flexible alternative to subclassing for extending functionality.
+Attach additional responsibilities to an object dynamically keeping the same interface.Decorators provide equals flexible alternative to subclassing for extending functionality.
+
+* Android中，Context就是接口，ContextWrapper是抽象装饰类，Application、Service、Activity继承ContextWrapper，是具体装饰类
 
 ### 模版方法模式(Template Method Pattern)
 > 定义一个操作中的算法的框架，而将一些步骤延迟到子类中。是的子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
