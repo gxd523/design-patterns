@@ -1,5 +1,7 @@
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
+[TOC]
+
 # 面向对象的6大原则
 ### 单一职责原则
 

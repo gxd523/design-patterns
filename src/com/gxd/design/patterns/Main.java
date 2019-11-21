@@ -58,26 +58,26 @@ public class Main {
     }
 
     /**
-     * 动态代理模式
-     */
-    private static void dynamicProxyPattern() {
-        Subject delegator1 = new Delegator();
-        ProxyHandler proxyHandler = new ProxyHandler(delegator1);
-        Subject proxySubject = (Subject) Proxy.newProxyInstance(
-                Subject.class.getClassLoader(),
-                new Class[]{Subject.class},// 代理类实现的接口列表
-                proxyHandler
-        );
-        proxySubject.doSomething();
-    }
-
-    /**
      * 代理模式
      */
     private static void proxyPattern() {
         Subject delegator = new Delegator();
         Subject agent = new Agent(delegator);
         agent.doSomething();
+    }
+
+    /**
+     * 动态代理模式
+     */
+    private static void dynamicProxyPattern() {
+        Subject delegator = new Delegator();
+        ProxyHandler proxyHandler = new ProxyHandler(delegator);
+        Subject proxySubject = (Subject) Proxy.newProxyInstance(
+                Subject.class.getClassLoader(),
+                new Class[]{Subject.class},// 代理类实现的接口列表
+                proxyHandler
+        );
+        proxySubject.doSomething();
     }
 
     /**
