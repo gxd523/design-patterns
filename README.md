@@ -4,27 +4,33 @@
 
 # 面向对象的6大原则
 ### 单一职责原则
+> 一个类应该尽量职责单一。
 
 ### 开闭原则
 > 尽量通过扩展的方式实现新功能，而不是通过修改现有代码实现。
+
 ### 里氏替换原则
 > 以父类声明的变量，可以赋值任何子类，并不影响程序执行。(感觉是多态的体现)
+
 ### 依赖倒置原则
-> 各个模块之间相互传递的参数声明为抽象类型，而不是声明为具体的实现类。
+> 各个模块之间相互传递的参数声明为抽象类型，而不是声明为具体的实现类。(实现解耦)
+
 ### 接口隔离原则
 > 类之间的依赖关系应该建立在最小的接口上。其原则是将非常庞大的、臃肿的接口拆分成更小的更具体的接口。
+
 ###  迪米特原则
 > 一个类应该对自己调用的类知道的最少。还是不懂？其实简单来说：假设类A实现了某个功能，类B需要调用类A的去执行这个功能，那么类A应该只暴露一个函数给类B，这个函数表示是实现这个功能的函数，而不是让类A把实现这个功能的所有细分的函数暴露给B。
+
 # 23种设计模式
 ### 建造者模式(Builder Pattern)
 > 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+> Android中AlertDialog.Builder，okhttp中RequestBuilder都用到了建造者模式
 
 Separate the construction of equals complex object from its representation so that the same construction process can create different representations.
 
-* Android中AlertDialog.Builder，okhttp中RequestBuilder
-
 ### 工厂模式
 > 工厂方法模式的作用就是封装对象的创建，由子类决定要创建的对象是什么。
+> Andorid中getSystemService(name)就用到了工厂模式，根据传入参数决定创建哪个对象。
 
 ### 单例模式
 > 饿汉式、双重锁懒汉式、绝对单例的静态内部类式。
@@ -46,10 +52,15 @@ Attach additional responsibilities to an object dynamically keeping the same int
 
 ### 模版方法模式(Template Method Pattern)
 > 定义一个操作中的算法的框架，而将一些步骤延迟到子类中。是的子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
+> 在Android中，Activity的生命周期方法，由系统调用，我们只需重写方法
 
 Define the skeleton of an algorithm in an operation,deferring some steps to subclasses.Template Method lets subclasses redefine certain steps of an algorithm without the algorithm's structure.
 
-* 在Android中，很多地方用到：
-  * 系统启动过程
-  * 组件生命周期，比如Activity和Service等
-  * 一些具体封装类，比如AsyncTask等 
+### 责任链模式(Chain of Responsibility Pattern)
+> 使多个对象都有机会处理请求，从而避免了请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有对象处理它为止。
+> Android事件传递
+
+Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request.Chain the receiving objects and pass the request along the chain until an object handles it.
+
+### 原型模式(Prototype Pattern)
+> 就是实现Clone接口来拷贝对象。

@@ -1,6 +1,10 @@
 package com.gxd.design.patterns;
 
 import com.gxd.design.patterns.builder.Person;
+import com.gxd.design.patterns.chain.Event;
+import com.gxd.design.patterns.chain.impl.Activity;
+import com.gxd.design.patterns.chain.impl.View;
+import com.gxd.design.patterns.chain.impl.ViewGroup;
 import com.gxd.design.patterns.decorator.ConcreteComponent;
 import com.gxd.design.patterns.decorator.ConcreteDecorator1;
 import com.gxd.design.patterns.decorator.ConcreteDecorator2;
@@ -35,6 +39,22 @@ public class Main {
         singletonPattern();
         factoryPattern();
         templatePattern();
+        responsibilityChainPattern();
+    }
+
+    /**
+     * 责任链模式
+     */
+    private static void responsibilityChainPattern() {
+        Activity activity = new Activity();
+        ViewGroup viewGroup = new ViewGroup();
+        View view = new View();
+
+        activity.setNextHandler(viewGroup);
+        viewGroup.setNextHandler(view);
+
+        Event event = new Event();
+        activity.dispatchEvent(event);
     }
 
     /**
