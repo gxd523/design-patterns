@@ -1,6 +1,4 @@
-package com.gxd.design.patterns.factory.phoneimpl;
-
-import com.gxd.design.patterns.factory.Phone;
+package com.gxd.design.patterns.factory.phone;
 
 /**
  * Created by guoxiaodong on 2019/4/5 14:21

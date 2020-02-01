@@ -8,10 +8,11 @@ import com.gxd.design.patterns.chain.impl.ViewGroup;
 import com.gxd.design.patterns.decorator.ConcreteComponent;
 import com.gxd.design.patterns.decorator.ConcreteDecorator1;
 import com.gxd.design.patterns.decorator.ConcreteDecorator2;
-import com.gxd.design.patterns.factory.Phone;
-import com.gxd.design.patterns.factory.PhoneFactory;
-import com.gxd.design.patterns.factory.phonefactoryimpl.OnePlusPhoneFactory;
-import com.gxd.design.patterns.factory.phonefactoryimpl.SamsungPhoneFactory;
+import com.gxd.design.patterns.factory.phone.OnePlusPhone;
+import com.gxd.design.patterns.factory.phone.Phone;
+import com.gxd.design.patterns.factory.phone.SamsungPhone;
+import com.gxd.design.patterns.factory.phonefactory.ConcretePhoneFactory;
+import com.gxd.design.patterns.factory.phonefactory.PhoneFactory;
 import com.gxd.design.patterns.observer.impl.Observable;
 import com.gxd.design.patterns.observer.impl.Subscriber;
 import com.gxd.design.patterns.proxy.Agent;
@@ -118,13 +119,12 @@ public class Main {
         Phone phone;
         PhoneFactory phoneFactory;
 
-        phoneFactory = new OnePlusPhoneFactory();
-        phone = phoneFactory.createPhone();
+        phoneFactory = new ConcretePhoneFactory();
+        phone = phoneFactory.createPhone(SamsungPhone.class);
         phone.call();
         phone.sendMessage();
 
-        phoneFactory = new SamsungPhoneFactory();
-        phone = phoneFactory.createPhone();
+        phone = phoneFactory.createPhone(OnePlusPhone.class);
         phone.call();
         phone.sendMessage();
     }
