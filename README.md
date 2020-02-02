@@ -64,3 +64,7 @@ Avoid coupling the sender of a request to its receiver by giving more than one o
 
 ### 原型模式(Prototype Pattern)
 > 就是实现Clone接口来拷贝对象。
+
+### 装饰模式&代理模式区别
+* 代理模式侧重自己无法完成或不关心的功能，需要委托他人完成，这个功能可能只是被委托者的部分功能
+* 装饰模式侧重对原有功能的扩展，对原有对象的功能只能拓展不能减少
