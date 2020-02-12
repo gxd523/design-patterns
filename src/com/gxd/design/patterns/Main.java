@@ -13,11 +13,13 @@ import com.gxd.design.patterns.factory.phone.Phone;
 import com.gxd.design.patterns.factory.phone.SamsungPhone;
 import com.gxd.design.patterns.factory.phonefactory.ConcretePhoneFactory;
 import com.gxd.design.patterns.factory.phonefactory.PhoneFactory;
+import com.gxd.design.patterns.observer.callback.Button;
+import com.gxd.design.patterns.observer.callback.OnClickListener;
 import com.gxd.design.patterns.observer.impl.Observable;
 import com.gxd.design.patterns.observer.impl.Subscriber;
 import com.gxd.design.patterns.proxy.Proxy;
-import com.gxd.design.patterns.proxy.SubjectImpl;
 import com.gxd.design.patterns.proxy.Subject;
+import com.gxd.design.patterns.proxy.SubjectImpl;
 import com.gxd.design.patterns.proxy.dynamic.ProxyHandler;
 import com.gxd.design.patterns.singleton.HungrySingleton;
 import com.gxd.design.patterns.singleton.LazySingleton;
@@ -30,6 +32,7 @@ import com.gxd.design.patterns.template.ElephantTemplate;
  */
 public class Main {
     public static void main(String[] args) {
+        callback();
         observerPattern();
         builderPattern();
         decoratorPattern();
@@ -150,5 +153,20 @@ public class Main {
 
         observable.notifyAllObservers("notify all subscriber.");
         observable.notify(subscriber1, "notify subscriber1.");
+    }
+
+    /**
+     * 回调
+     */
+    private static void callback() {
+        Button button = new Button();
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick() {
+                System.out.println("onClick");
+            }
+        });
+
+        button.click();
     }
 }
