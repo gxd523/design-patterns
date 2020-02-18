@@ -8,10 +8,10 @@ public class Person {
     private int age;
     private String sex;
 
-    private Person(PersonBuilder personBuilder) {
-        this.name = personBuilder.name;
-        this.age = personBuilder.age;
-        this.sex = personBuilder.sex;// 如果sex=sex+age,那么直接使用Person时，Person的赋值顺序就会影响到sex的值，而使用PersonBuilder就不会
+    private Person(Builder builder) {
+        this.name = builder.name;
+        this.age = builder.age;
+        this.sex = builder.sex;// 如果sex=sex+age,那么直接使用Person时，Person的赋值顺序就会影响到sex的值，而使用PersonBuilder就不会
     }
 
     public String getName() {
@@ -31,28 +31,28 @@ public class Person {
         return "Person{" + "name=" + name + ",age=" + age + ",sex=" + sex + "}";
     }
 
-    public static class PersonBuilder {
+    public static class Builder {
         private String name;
         private int age;
         private String sex;
 
-        public PersonBuilder() {
+        public Builder() {
             this.name = "郭晓东";
             this.age = 28;
             this.sex = "男";
         }
 
-        public PersonBuilder setName(String name) {
+        public Builder setName(String name) {
             this.name = name;
             return this;
         }
 
-        public PersonBuilder setAge(int age) {
+        public Builder setAge(int age) {
             this.age = age;
             return this;
         }
 
-        public PersonBuilder setSex(String sex) {
+        public Builder setSex(String sex) {
             this.sex = sex;
             return this;
         }

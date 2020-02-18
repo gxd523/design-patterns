@@ -49,6 +49,7 @@ Provide equals surrogate or placeholder for another object to control access to 
 Attach additional responsibilities to an object dynamically keeping the same interface.Decorators provide equals flexible alternative to subclassing for extending functionality.
 
 * Android中，Context就是接口，ContextWrapper是抽象装饰类，Application、Service、Activity继承ContextWrapper，是具体装饰类
+* Rxjava大量的操作符的链式调用的实现方式使用了装饰设计模式
 
 ### 模版方法模式(Template Method Pattern)
 > 定义一个操作中的算法的框架，而将一些步骤延迟到子类中。是的子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。

@@ -134,7 +134,7 @@ public class Main {
      * 建造者模式
      */
     private static void builderPattern() {
-        Person person = new Person.PersonBuilder()
+        Person person = new Person.Builder()
                 .setName("Tom")
                 .setAge(22)
                 .build();

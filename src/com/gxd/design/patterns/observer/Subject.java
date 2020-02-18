@@ -12,5 +12,5 @@ public interface Subject {
 
     void notifyAllObservers(Object data);
 
-    void notify(Observer observer,Object data);
+    void notify(Observer observer, Object data);
 }
