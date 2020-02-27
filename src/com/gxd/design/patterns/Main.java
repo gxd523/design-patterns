@@ -17,15 +17,17 @@ import com.gxd.design.patterns.observer.callback.Button;
 import com.gxd.design.patterns.observer.callback.OnClickListener;
 import com.gxd.design.patterns.observer.impl.Observable;
 import com.gxd.design.patterns.observer.impl.Subscriber;
-import com.gxd.design.patterns.proxy.Proxy;
 import com.gxd.design.patterns.proxy.Subject;
 import com.gxd.design.patterns.proxy.SubjectImpl;
+import com.gxd.design.patterns.proxy.SubjectProxy;
 import com.gxd.design.patterns.proxy.dynamic.ProxyHandler;
 import com.gxd.design.patterns.singleton.HungrySingleton;
 import com.gxd.design.patterns.singleton.LazySingleton;
 import com.gxd.design.patterns.singleton.StaticSingleton;
 import com.gxd.design.patterns.template.AbstractTemplate;
 import com.gxd.design.patterns.template.ElephantTemplate;
+
+import java.lang.reflect.Proxy;
 
 /**
  * Created by guoxiaodong on 2019/4/5 12:17
@@ -83,23 +85,22 @@ public class Main {
      * 代理模式
      */
     private static void proxyPattern() {
-        Subject delegator = new SubjectImpl();
-        Subject agent = new Proxy(delegator);
-        agent.doSomething();
+        Subject subject = new SubjectImpl();
+        Subject subjectProxy = new SubjectProxy(subject);
+        subjectProxy.doSomething();
     }
 
     /**
      * 动态代理模式
      */
     private static void dynamicProxyPattern() {
-        Subject delegator = new SubjectImpl();
-        ProxyHandler proxyHandler = new ProxyHandler(delegator);
-        Subject proxySubject = (Subject) java.lang.reflect.Proxy.newProxyInstance(
+        Subject subject = new SubjectImpl();
+        Subject subjectProxy = (Subject) Proxy.newProxyInstance(
                 Subject.class.getClassLoader(),
                 new Class[]{Subject.class},// 代理类实现的接口列表
-                proxyHandler
+                new ProxyHandler(subject)
         );
-        proxySubject.doSomething();
+        subjectProxy.doSomething();
     }
 
     /**

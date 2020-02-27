@@ -17,7 +17,7 @@ public class ProxyHandler implements InvocationHandler {
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object obj, Method method, Object[] args) throws Throwable {
         System.out.println("do something before.");
         Object result = method.invoke(delegator, args);
         System.out.println("do something after.");

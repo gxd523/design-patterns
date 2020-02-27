@@ -43,6 +43,8 @@ Separate the construction of equals complex object from its representation so th
 
 Provide equals surrogate or placeholder for another object to control access to it.
 
+* 动态代理在Hook技术中有应用
+
 ### 装饰模式(Decorator Pattern)
 > 动态地给一个对象添加一些额外的职责。就增加功能来说，装饰模式相比生成子类更加灵活。
 

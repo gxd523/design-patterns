@@ -3,10 +3,10 @@ package com.gxd.design.patterns.proxy;
 /**
  * 代理者、委托者
  */
-public class Proxy implements Subject {
+public class SubjectProxy implements Subject {
     private Subject delegator;
 
-    public Proxy(Subject delegator) {
+    public SubjectProxy(Subject delegator) {
         this.delegator = delegator;
     }
 
