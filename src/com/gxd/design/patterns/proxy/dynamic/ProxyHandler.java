@@ -8,18 +8,18 @@ import java.lang.reflect.Method;
  */
 public class ProxyHandler implements InvocationHandler {
     /**
-     * 委托对象
+     * 真正干活的人
      */
-    private Object delegator;
+    private Object subject;
 
-    public ProxyHandler(Object delegator) {
-        this.delegator = delegator;
+    public ProxyHandler(Object subject) {
+        this.subject = subject;
     }
 
     @Override
     public Object invoke(Object obj, Method method, Object[] args) throws Throwable {
         System.out.println("do something before.");
-        Object result = method.invoke(delegator, args);
+        Object result = method.invoke(subject, args);
         System.out.println("do something after.");
         return result;
     }
