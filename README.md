@@ -30,7 +30,7 @@ Separate the construction of equals complex object from its representation so th
 
 ### 工厂模式
 > 工厂方法模式的作用就是封装对象的创建，由子类决定要创建的对象是什么。
-> Andorid中getSystemService(name)就用到了工厂模式，根据传入参数决定创建哪个对象。
+> Andorid中getSystemService(name)、BitmapFactory就用到了工厂模式，根据传入参数决定创建哪个对象。
 
 ### 单例模式
 > 饿汉式、双重锁懒汉式、绝对单例的静态内部类式。

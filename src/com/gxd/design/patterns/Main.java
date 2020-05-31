@@ -21,6 +21,7 @@ import com.gxd.design.patterns.proxy.Subject;
 import com.gxd.design.patterns.proxy.SubjectImpl;
 import com.gxd.design.patterns.proxy.SubjectProxy;
 import com.gxd.design.patterns.proxy.dynamic.ProxyHandler;
+import com.gxd.design.patterns.singleton.EnumSingleton;
 import com.gxd.design.patterns.singleton.HungrySingleton;
 import com.gxd.design.patterns.singleton.LazySingleton;
 import com.gxd.design.patterns.singleton.StaticSingleton;
@@ -71,6 +72,8 @@ public class Main {
         LazySingleton lazySingleton = LazySingleton.getInstance();
         // 静态单例
         StaticSingleton staticSingleton = StaticSingleton.getInstance();
+        // 枚举单例
+        EnumSingleton enumSingleton = EnumSingleton.INSTANCE;
     }
 
     /**

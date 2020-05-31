@@ -4,6 +4,9 @@ package com.gxd.design.patterns.singleton;
  * 饿汉单例
  */
 public class HungrySingleton {
+    /**
+     * JVM保证线程安全
+     */
     private static final HungrySingleton INSTANCE = new HungrySingleton();
 
     private HungrySingleton() {
