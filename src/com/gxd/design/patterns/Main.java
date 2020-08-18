@@ -13,10 +13,10 @@ import com.gxd.design.patterns.factory.phone.Phone;
 import com.gxd.design.patterns.factory.phone.SamsungPhone;
 import com.gxd.design.patterns.factory.phonefactory.ConcretePhoneFactory;
 import com.gxd.design.patterns.factory.phonefactory.PhoneFactory;
+import com.gxd.design.patterns.observer.Observable;
+import com.gxd.design.patterns.observer.Observer;
 import com.gxd.design.patterns.observer.callback.Button;
 import com.gxd.design.patterns.observer.callback.OnClickListener;
-import com.gxd.design.patterns.observer.impl.Observable;
-import com.gxd.design.patterns.observer.impl.Subscriber;
 import com.gxd.design.patterns.proxy.Subject;
 import com.gxd.design.patterns.proxy.SubjectImpl;
 import com.gxd.design.patterns.proxy.SubjectProxy;
@@ -150,13 +150,13 @@ public class Main {
      */
     private static void observerPattern() {
         Observable observable = new Observable();
-        Subscriber subscriber1 = new Subscriber();
-        observable.addObserver(subscriber1);
-        Subscriber subscriber2 = new Subscriber();
-        observable.addObserver(subscriber2);
+        Observer observer1 = data -> System.out.println("observer1..." + data.toString());
+        observable.addObserver(observer1);
+        Observer observer2 = data -> System.out.println("observer2..." + data.toString());
+        observable.addObserver(observer2);
 
-        observable.notifyAllObservers("notify all subscriber.");
-        observable.notify(subscriber1, "notify subscriber1.");
+        observable.notifyAllObservers("notify all observer.");
+        observable.notify(observer1, "notify observer1.");
     }
 
     /**

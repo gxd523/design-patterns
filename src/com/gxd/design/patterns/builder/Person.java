@@ -4,9 +4,9 @@ package com.gxd.design.patterns.builder;
  * Created by guoxiaodong on 2019/4/5 12:13
  */
 public class Person {
-    private String name;
-    private int age;
-    private String sex;
+    private final String name;
+    private final int age;
+    private final String sex;
 
     private Person(Builder builder) {
         this.name = builder.name;
