@@ -33,7 +33,7 @@ Separate the construction of equals complex object from its representation so th
 > Andorid中getSystemService(name)、BitmapFactory就用到了工厂模式，根据传入参数决定创建哪个对象。
 
 ### 单例模式
-> 饿汉式、双重锁懒汉式、绝对单例的静态内部类式。
+> 饿汉单例、volatile双重锁懒汉单例、静态内部类单例、枚举单例。
 
 ### 观察者模式
 > 观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。
