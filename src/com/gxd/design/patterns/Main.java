@@ -20,7 +20,6 @@ import com.gxd.design.patterns.observer.callback.OnClickListener;
 import com.gxd.design.patterns.proxy.Subject;
 import com.gxd.design.patterns.proxy.SubjectImpl;
 import com.gxd.design.patterns.proxy.SubjectProxy;
-import com.gxd.design.patterns.proxy.dynamic.ProxyHandler;
 import com.gxd.design.patterns.singleton.EnumSingleton;
 import com.gxd.design.patterns.singleton.HungrySingleton;
 import com.gxd.design.patterns.singleton.LazySingleton;
@@ -28,6 +27,8 @@ import com.gxd.design.patterns.singleton.StaticSingleton;
 import com.gxd.design.patterns.template.AbstractTemplate;
 import com.gxd.design.patterns.template.ElephantTemplate;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -89,7 +90,9 @@ public class Main {
      */
     private static void proxyPattern() {
         Subject subject = new SubjectImpl();
+
         Subject subjectProxy = new SubjectProxy(subject);
+
         subjectProxy.doSomething();
     }
 
@@ -98,11 +101,21 @@ public class Main {
      */
     private static void dynamicProxyPattern() {
         Subject subject = new SubjectImpl();
+
         Subject subjectProxy = (Subject) Proxy.newProxyInstance(
                 Subject.class.getClassLoader(),
                 new Class[]{Subject.class},// 代理类实现的接口列表
-                new ProxyHandler(subject)
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        System.out.println("do something before.");
+                        Object result = method.invoke(subject, args);
+                        System.out.println("do something after.");
+                        return result;
+                    }
+                }
         );
+
         subjectProxy.doSomething();
     }
 
