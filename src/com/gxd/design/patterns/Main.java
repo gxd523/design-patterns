@@ -102,19 +102,22 @@ public class Main {
     private static void dynamicProxyPattern() {
         Subject subject = new SubjectImpl();
 
+        InvocationHandler invocationHandler = new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                System.out.println("do something before.");
+                Object result = method.invoke(subject, args);
+                System.out.println("do something after.");
+                return result;
+            }
+        };
         Subject subjectProxy = (Subject) Proxy.newProxyInstance(
                 Subject.class.getClassLoader(),
                 new Class[]{Subject.class},// 代理类实现的接口列表
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        System.out.println("do something before.");
-                        Object result = method.invoke(subject, args);
-                        System.out.println("do something after.");
-                        return result;
-                    }
-                }
+                invocationHandler
         );
+
+//        Subject subjectProxy = new $Proxy0(invocationHandler);
 
         subjectProxy.doSomething();
     }
