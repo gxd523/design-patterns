@@ -1,5 +1,7 @@
 package com.gxd.design.patterns;
 
+import com.gxd.design.patterns.adapter.Adapter;
+import com.gxd.design.patterns.adapter.Target;
 import com.gxd.design.patterns.builder.Person;
 import com.gxd.design.patterns.chain.Event;
 import com.gxd.design.patterns.chain.impl.Activity;
@@ -35,7 +37,7 @@ import java.lang.reflect.Proxy;
  * Created by guoxiaodong on 2019/4/5 12:17
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         callback();
         observerPattern();
         builderPattern();
@@ -46,6 +48,12 @@ public class Main {
         factoryPattern();
         templatePattern();
         responsibilityChainPattern();
+        adapterPattern();
+    }
+
+    private static void adapterPattern() {
+        Target adapter = new Adapter();
+        System.out.println(adapter.getFive());
     }
 
     /**
