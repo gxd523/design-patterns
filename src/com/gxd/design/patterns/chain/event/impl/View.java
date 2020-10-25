@@ -1,7 +1,7 @@
-package com.gxd.design.patterns.chain.impl;
+package com.gxd.design.patterns.chain.event.impl;
 
-import com.gxd.design.patterns.chain.Event;
-import com.gxd.design.patterns.chain.EventHandler;
+import com.gxd.design.patterns.chain.event.Event;
+import com.gxd.design.patterns.chain.event.EventHandler;
 
 public class View extends EventHandler {
     @Override

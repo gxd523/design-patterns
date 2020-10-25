@@ -1,7 +1,7 @@
 package com.gxd.design.patterns.proxy;
 
 /**
- * 代理者(委托者)
+ * delegator代替SubjectProxy实现Subject接口
  */
 public class SubjectProxy implements Subject {
     private final Subject delegator;

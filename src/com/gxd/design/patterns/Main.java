@@ -3,10 +3,15 @@ package com.gxd.design.patterns;
 import com.gxd.design.patterns.adapter.Adapter;
 import com.gxd.design.patterns.adapter.Target;
 import com.gxd.design.patterns.builder.Person;
-import com.gxd.design.patterns.chain.Event;
-import com.gxd.design.patterns.chain.impl.Activity;
-import com.gxd.design.patterns.chain.impl.View;
-import com.gxd.design.patterns.chain.impl.ViewGroup;
+import com.gxd.design.patterns.chain.event.Event;
+import com.gxd.design.patterns.chain.event.impl.Activity;
+import com.gxd.design.patterns.chain.event.impl.View;
+import com.gxd.design.patterns.chain.event.impl.ViewGroup;
+import com.gxd.design.patterns.chain.interceptor.Interceptor;
+import com.gxd.design.patterns.chain.interceptor.Request;
+import com.gxd.design.patterns.chain.interceptor.impl.CallServerInterceptor;
+import com.gxd.design.patterns.chain.interceptor.impl.ChainImpl;
+import com.gxd.design.patterns.chain.interceptor.impl.RetryAndFollowUpInterceptor;
 import com.gxd.design.patterns.decorator.ConcreteComponent;
 import com.gxd.design.patterns.decorator.ConcreteDecorator1;
 import com.gxd.design.patterns.decorator.ConcreteDecorator2;
@@ -32,12 +37,14 @@ import com.gxd.design.patterns.template.ElephantTemplate;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by guoxiaodong on 2019/4/5 12:17
  */
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         callback();
         observerPattern();
         builderPattern();
@@ -48,12 +55,23 @@ public class Main {
         factoryPattern();
         templatePattern();
         responsibilityChainPattern();
+        okHttpInterceptor();
         adapterPattern();
     }
 
     private static void adapterPattern() {
         Target adapter = new Adapter();
         System.out.println(adapter.getFive());
+    }
+
+    private static void okHttpInterceptor() {
+        List<Interceptor> interceptorList = new ArrayList<>();
+        interceptorList.add(new RetryAndFollowUpInterceptor());
+        interceptorList.add(new CallServerInterceptor());
+        Request originalRequest = new Request() {
+        };
+        ChainImpl chain = new ChainImpl(interceptorList, 0, originalRequest);
+        chain.process(originalRequest);
     }
 
     /**

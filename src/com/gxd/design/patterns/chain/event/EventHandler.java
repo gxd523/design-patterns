@@ -1,7 +1,9 @@
-package com.gxd.design.patterns.chain;
+package com.gxd.design.patterns.chain.event;
 
 /**
  * 责任链模式
+ * 类似递归，dispatchEvent()内调用dispatchEvent()
+ * 只是dispatchEvent()所属的对象不是同一个
  */
 public abstract class EventHandler {
     private EventHandler nextHandler;
