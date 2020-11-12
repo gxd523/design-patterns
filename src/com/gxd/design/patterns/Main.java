@@ -31,6 +31,8 @@ import com.gxd.design.patterns.singleton.EnumSingleton;
 import com.gxd.design.patterns.singleton.HungrySingleton;
 import com.gxd.design.patterns.singleton.LazySingleton;
 import com.gxd.design.patterns.singleton.StaticSingleton;
+import com.gxd.design.patterns.state.CloseState;
+import com.gxd.design.patterns.state.Context;
 import com.gxd.design.patterns.template.AbstractTemplate;
 import com.gxd.design.patterns.template.ElephantTemplate;
 
@@ -57,6 +59,21 @@ public class Main {
         responsibilityChainPattern();
         okHttpInterceptor();
         adapterPattern();
+        statePattern();
+    }
+
+    private static void statePattern() {
+        Context context = new Context();
+        context.setCurrentState(new CloseState());
+
+        context.open();
+
+        context.run();
+        
+        context.close();
+        context.run();
+        context.stop();
+        context.open();
     }
 
     private static void adapterPattern() {
